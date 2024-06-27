@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme Raporu</title>
+    <style>
+      
+        body {
+            font-family: Inter, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #EDF4FF;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            width: 210mm; 
+            min-height: 297mm;
+            margin: 0 auto;
+            background-color: #EDF4FF;
+            position: relative; 
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            height: 144px; 
+        }
+        .title {
+            font-size: 36px;
+            color: #003EB0;
+            margin: 0;
+        }
+        .company-info {
+            text-align: right;
+            font-size: 12px;
+            color: #7C828D;
+            max-width: 141px;
+        }
+        .company-info .company-name {
+            color: #003EB0;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px; 
+        }
+        .company-info div {
+            margin-bottom: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border: 1px solid #D2DBE9;
+        
+        }
+     
+        th, td {
+            padding: 8px;
+            font-family: "Inter", sans-serif;
+            font-size: 10px; 
+        }
+        td {
+            color: #000;
+        }
+        tr:nth-child(even) {
+            background-color: #fff; 
+        }
+        tr:nth-child(odd) {
+            background-color: #EDF4FF;
+        }
+        th {
+            background-color: #fff;
+            color: #5C769F;
+            border: 1px solid #ddd; 
+            text-align: left;
+            font-weight: bold;
+        }
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 10px; 
+            font-weight: 500;
+        }
+        /* Durum renkleri */
+        .status-badge.pending {
+            background-color: #B2E3DB; 
+            color: #00626A;
+        }
+        .status-badge.paid {
+            background-color: #C6F197; /* Ödendi */
+            color: #206D08;
+        }
+        .status-badge.cancelled {
+            background-color: #FFB0B0; /* İptal Edildi */
+            color: #B22323;
+        }
+        .header-left {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            height: 100%;
+        
+
+        }
+        .logo {
+            margin-bottom: 10px;
+        }
+    
+        .income {
+            background-color: #C6F197;
+            color: #206D08;
+        }
+    
+        .expense {
+            background-color: #FFB0B0;
+            color: #B22323;
+        }
+      
+        .footer-image {
+            position: absolute;
+            bottom: 20px;
+            right: 20px; 
+            width: 810px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <img src="https://www.panelbu.com/Logo.svg" alt="Panelbu Logo" width="100px" class="logo">
+                <h1 class="title">Ödeme Raporu</h1>
+            </div>
+            <div class="company-info">
+                <div class="company-name">Panelbu Teknoloji A.Ş.</div>
+                <div>Abdurrahmangazi Mh. Alparslan Cd. No: 2-D</div>
+                <div>info@panelbu.com</div>
+                <div>Vergi No: 123456789010</div>
+            </div>
+        </div>
+        
+        <!-- Start of table generation with dynamic content -->
+        <table id="payment-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ADI</th>
+                    <th>CARİ HESAP</th>
+                    <th>O. TARİHİ</th>
+                    <th>V. TARİHİ</th>
+                    <th>TUTAR</th>
+                    <th>TİP</th>
+                    <th>DURUM</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+              
+            </tbody>
+        </table>
+        <!-- End of table -->
+
+        <!-- Footer image -->
+        <img src="public/123.png" alt="Image 123" class="footer-image">
+    </div>
+
+    <script>
+       
+        const data = [
+            {
+                "id": 3,
+                "name": "qwdqw",
+                "description": "qwdqwd",
+                "amount": 123415,
+                "user_id": 4,
+                "company_id": 2,
+                "currency": "TRY",
+                "type": "INCOME",
+                "status": "PENDING",
+                "due_date": "2024-06-27T12:08:43.546Z",
+                "paid_date": null,
+                "createdAt": "2024-06-27T12:08:52.914Z",
+                "updatedAt": "2024-06-27T12:08:52.914Z",
+                "current_account_id": 1,
+                "bank_account_id": null,
+                "project_id": null,
+                "current_account": {
+                    "name": "qwdqwdq"
+                }
+            },
+            {
+                "id": 2,
+                "name": "qwd",
+                "description": "qwd",
+                "amount": 1234,
+                "user_id": 4,
+                "company_id": 2,
+                "currency": "TRY",
+                "type": "INCOME",
+                "status": "PENDING",
+                "due_date": "2024-06-27T12:06:59.580Z",
+                "paid_date": null,
+                "createdAt": "2024-06-27T12:07:19.776Z",
+                "updatedAt": "2024-06-27T12:07:19.776Z",
+                "current_account_id": 1,
+                "bank_account_id": null,
+                "project_id": null,
+                "current_account": {
+                    "name": "qwdqwdq"
+                }
+            },
+            {
+                "id": 1,
+                "name": "qwdqwd",
+                "description": "qwdqwd",
+                "amount": 1234566,
+                "user_id": 4,
+                "company_id": 2,
+                "currency": "TRY",
+                "type": "INCOME",
+                "status": "PENDING",
+                "due_date": "2024-06-27T09:57:08.199Z",
+                "paid_date": null,
+                "createdAt": "2024-06-27T09:57:14.991Z",
+                "updatedAt": "2024-06-27T09:57:14.991Z",
+                "current_account_id": 1,
+                "bank_account_id": null,
+                "project_id": null,
+                "current_account": {
+                    "name": "qwdqwdq"
+                }
+            }
+      
+        ];
+
+ 
+        const tableBody = document.getElementById('table-body');
+
+        data.forEach(item => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${item.id}</td>
+                <td>${item.name}</td>
+                <td>${item.current_account.name}</td>
+                <td>${new Date(item.createdAt).toLocaleDateString()}</td>
+                <td>${item.due_date ? new Date(item.due_date).toLocaleDateString() : '-'}</td>
+                <td>${item.amount.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY' })}</td>
+                <td><span class="status-badge ${item.type === 'INCOME' ? 'income' : 'expense'}">${item.type === 'INCOME' ? 'Gelir' : 'Gider'}</span></td>
+                <td><span class="status-badge ${item.status.toLowerCase()}">${item.status === 'PAID' ? 'Ödendi' : item.status === 'CANCELLED' ? 'İptal Edildi' : 'Beklemede'}</span></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
