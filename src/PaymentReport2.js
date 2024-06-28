@@ -4,8 +4,15 @@ import './PaymentReport2.css';
 const PaymentReport2 = ({ data }) => {
   return (
     <div className="container">
-   
-
+    <div className="header2">
+     
+          <img src="https://www.panelbu.com/Logo.svg" alt="Panelbu Logo" width="100px" className="logo" />
+       
+         
+        
+        
+      </div>
+   <div className="table-container">
       <table id="payment-table" className='table2'>
         <thead>
           <tr>
@@ -42,16 +49,16 @@ const PaymentReport2 = ({ data }) => {
           ))}
         </tbody>
       </table>
-
+      </div>
       <div className="footer">
         <div className="footer-left">
-          *Bu döküman PanelBU tarafından oluşturulmuştur.
+          *Bu doküman PanelBU tarafından oluşturulmuştur.
         </div>
         <div className="footer-right">
           <div className="footer-text-section">
             <span className="footer-text">İhtiyacın Olan Tek</span>
           </div>
-          <img src="https://www.panelbu.com/Logo.svg" alt="Panelbu Logo" width="100px" className="logo-footer" />
+          <img src="../footer-image.svg" alt="Panelbu Logo" width="42px" className="logo-footer" />
           <div className="page-number">
             <span className="current-page">2/2</span>
           </div>

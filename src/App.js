@@ -104,30 +104,22 @@ const App = () => {
     taxNumber: '1234567890'
   };
 
-  const pageSize = 30;
-  const pages = Math.ceil(data.length / pageSize);
+  const pageSize = 16;
+  const firstPageData = data.slice(0, pageSize);
+  const remainingData = data.slice(pageSize);
 
   const renderReports = () => {
     let reports = [];
-  
-    for (let i = 0; i < pages; i++) {
-      const pageData = data.slice(i * pageSize, (i + 1) * pageSize);
-  
-      if (i === 0) {
-        reports.push(
-          <PaymentReport key={i} company={company} data={pageData} />
-        );
-      } else {
-        reports.push(
-          <PaymentReport2 key={i} data={pageData} />
-        );
-      }
-  
-      // Adding space between reports
-      reports.push(
-        <div key={`spacer-${i}`} style={{ height: '20px' }} />
-      );
+
+    // Render first page with up to 16 entries
+    reports.push(<PaymentReport key={1} company={company} data={firstPageData} />);
+
+    // Render remaining entries in groups of 20 for PaymentReport2
+    for (let i = 0; i < remainingData.length; i += 19) {
+      const pageData = remainingData.slice(i, i + 19);
+      reports.push(<PaymentReport2 key={i / 19 + 2} data={pageData} />);
     }
+
     return reports;
   };
 
